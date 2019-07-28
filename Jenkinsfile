@@ -11,4 +11,11 @@ node{
    stage('build docker image'){
       sh 'docker build -t youceff/my-app:2.0.0 .'
    } 
+   stage('push docker image'){
+     withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerHubPwd')]) {
+           sh "docker login -u youceff -p ${dockerHubPwd}"
+      }
+     sh 'docker push  youceff/my-app:2.0.0'
+   }    
+
 }
