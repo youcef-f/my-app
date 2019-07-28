@@ -16,6 +16,10 @@ node{
            sh "docker login -u youceff -p ${dockerHubPwd}"
       }
      sh 'docker push  youceff/my-app:2.0.0'
-   }    
+   }   
+  stage('run docker image'){
+     def dockerRun = 'docker run -p 8080:8080 -d -name my-app youceff/my-app:2.0.0'
+        sh "${dockerRun}"
+   }  
 
 }
