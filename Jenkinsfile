@@ -18,7 +18,7 @@ node{
      sh 'docker push  youceff/my-app:2.0.0'
    }   
   stage('run docker image'){
-     def dockerRun = 'docker run -p 8080:8080 -d -name my-app youceff/my-app:2.0.0'
+     def dockerRun = 'docker run -d -p 8080:8080 -name my-app youceff/my-app:2.0.0'
         sh "${dockerRun}"
    }  
 
